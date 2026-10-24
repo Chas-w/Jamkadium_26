@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ca5te4xb45cj1"]
 
-[ext_resource type="Script" uid="uid://dmg2f3mfuf0jv" path="res://body_mover.gd" id="1_7h43o"]
+[ext_resource type="Script" uid="uid://dmg2f3mfuf0jv" path="res://Scripts/body_mover.gd" id="1_7h43o"]
 [ext_resource type="Texture2D" uid="uid://xyhm86j4d433" path="res://icon.svg" id="1_35550"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q2pd1"]
@@ -23,12 +23,13 @@ load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.cte
 radius = 16.0
 height = 96.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_78mdn"]
+radius = 269.09106
+
 [node name="Body" type="RigidBody2D" unique_id=2071669323 groups=["Body"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_7h43o")
-vel_MAX = 8000.0
-vel_MIN = 2000.0
 
 [node name="Body Collision" type="CollisionShape2D" parent="." unique_id=464653433]
 shape = SubResource("CapsuleShape2D_q2pd1")
@@ -211,3 +212,11 @@ softness = 2.78
 position = Vector2(0, 171)
 node_a = NodePath("../../Background Thigh")
 node_b = NodePath("../../Background Shin")
+
+[node name="Mover Area" type="Area2D" parent="." unique_id=1595907918]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover Area" unique_id=1000458022]
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_78mdn")
+
+[connection signal="input_event" from="Mover Area" to="." method="_on_mover_area_input_event"]

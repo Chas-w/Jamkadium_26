@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://p0257r651ft8"]
+
+[ext_resource type="Script" uid="uid://uaa3ophm5rut" path="res://Scripts/compute_trajectory.gd" id="1_d4oi8"]
+
+[node name="Line Prediction" type="Line2D" unique_id=1608928029]
+script = ExtResource("1_d4oi8")

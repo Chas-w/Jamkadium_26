@@ -66,5 +66,3 @@ follow_target = NodePath("../Body")
 zoom = Vector2(0.515, 0.515)
 tween_resource = SubResource("Resource_mq1bj")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
-
-[editable path="Body"]
