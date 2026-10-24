@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://ca5te4xb45cj1"]
+
+[ext_resource type="Script" uid="uid://dmg2f3mfuf0jv" path="res://body_mover.gd" id="1_7h43o"]
+[ext_resource type="Texture2D" uid="uid://xyhm86j4d433" path="res://icon.svg" id="1_35550"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q2pd1"]
+radius = 39.0
+height = 152.0
+
+[sub_resource type="Gradient" id="Gradient_q0t65"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ia51a"]
+gradient = SubResource("Gradient_q0t65")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35550"]
+radius = 30.0
+height = 90.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_35550"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_78mdn"]
+radius = 16.0
+height = 96.0
+
+[node name="Body" type="RigidBody2D" unique_id=2071669323 groups=["Body"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_7h43o")
+vel_MAX = 8000.0
+vel_MIN = 2000.0
+
+[node name="Body Collision" type="CollisionShape2D" parent="." unique_id=464653433]
+shape = SubResource("CapsuleShape2D_q2pd1")
+
+[node name="Temp Visual" type="Sprite2D" parent="Body Collision" unique_id=1839621062]
+scale = Vector2(1, 2.2622137)
+texture = SubResource("GradientTexture2D_ia51a")
+
+[node name="Head" type="RigidBody2D" parent="." unique_id=1144650411 groups=["Body"]]
+position = Vector2(0, -124)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1065962481]
+shape = SubResource("CapsuleShape2D_35550")
+
+[node name="Sprite2D" type="Sprite2D" parent="Head/CollisionShape2D" unique_id=1972549990]
+scale = Vector2(0.49164033, 0.6779516)
+texture = ExtResource("1_35550")
+
+[node name="Foreground Bicep" type="RigidBody2D" parent="." unique_id=78855675 groups=["Body"]]
+z_index = 1
+position = Vector2(0, -72)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Bicep" unique_id=205235332]
+position = Vector2(0, 46)
+shape = SubResource("CapsuleShape2D_35550")
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground Bicep/CollisionShape2D" unique_id=596171684]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.49164033, 0.6779516)
+texture = SubResource("CompressedTexture2D_35550")
+
+[node name="Foreground Arm" type="RigidBody2D" parent="." unique_id=811505521 groups=["Body"]]
+z_index = 1
+position = Vector2(0, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Arm" unique_id=1230897791]
+position = Vector2(0, 48)
+shape = SubResource("CapsuleShape2D_78mdn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground Arm/CollisionShape2D" unique_id=720239915]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.3280453, 0.7114404)
+texture = SubResource("CompressedTexture2D_35550")
+
+[node name="Background Bicep" type="RigidBody2D" parent="." unique_id=2032655242 groups=["Body"]]
+z_index = -1
+position = Vector2(4, -72)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background Bicep" unique_id=1648572495]
+position = Vector2(0, 46)
+shape = SubResource("CapsuleShape2D_35550")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Bicep/CollisionShape2D" unique_id=394117186]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.49164033, 0.6779516)
+texture = ExtResource("1_35550")
+
+[node name="Background Arm" type="RigidBody2D" parent="." unique_id=895496931 groups=["Body"]]
+z_index = -1
+position = Vector2(4, 24)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background Arm" unique_id=1206088604]
+position = Vector2(0, 48)
+shape = SubResource("CapsuleShape2D_78mdn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Arm/CollisionShape2D" unique_id=1678056717]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.3280453, 0.7114404)
+texture = ExtResource("1_35550")
+
+[node name="Foreground Thigh" type="RigidBody2D" parent="." unique_id=1605450514 groups=["Body"]]
+position = Vector2(0, 77)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Thigh" unique_id=1790142602]
+position = Vector2(0, 46)
+shape = SubResource("CapsuleShape2D_35550")
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground Thigh/CollisionShape2D" unique_id=1530689015]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.49164033, 0.6779516)
+texture = SubResource("CompressedTexture2D_35550")
+
+[node name="Foreground Shin" type="RigidBody2D" parent="." unique_id=119026989 groups=["Body"]]
+position = Vector2(0, 173)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Shin" unique_id=201409409]
+position = Vector2(0, 48)
+shape = SubResource("CapsuleShape2D_78mdn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground Shin/CollisionShape2D" unique_id=605986880]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.3280453, 0.7114404)
+texture = SubResource("CompressedTexture2D_35550")
+
+[node name="Background Thigh" type="RigidBody2D" parent="." unique_id=1865468728 groups=["Body"]]
+z_index = -1
+position = Vector2(0, 77)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background Thigh" unique_id=621247257]
+position = Vector2(0, 46)
+shape = SubResource("CapsuleShape2D_35550")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Thigh/CollisionShape2D" unique_id=1416125849]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.49164033, 0.6779516)
+texture = ExtResource("1_35550")
+
+[node name="Background Shin" type="RigidBody2D" parent="." unique_id=211218250 groups=["Body"]]
+z_index = -1
+position = Vector2(0, 173)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background Shin" unique_id=701034215]
+position = Vector2(0, 48)
+shape = SubResource("CapsuleShape2D_78mdn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Shin/CollisionShape2D" unique_id=330693280]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.3280453, 0.7114404)
+texture = ExtResource("1_35550")
+
+[node name="Joints" type="Node2D" parent="." unique_id=1726773933]
+position = Vector2(0, 1)
+
+[node name="Neck to Body" type="PinJoint2D" parent="Joints" unique_id=1582290437]
+position = Vector2(0, -75)
+node_a = NodePath("../../Head")
+node_b = NodePath("../..")
+
+[node name="Foreground Body to Bicep" type="PinJoint2D" parent="Joints" unique_id=1906099250]
+position = Vector2(0, -27)
+node_a = NodePath("../..")
+node_b = NodePath("../../Foreground Bicep")
+disable_collision = false
+softness = 2.78
+
+[node name="Foreground Bicep to Arm" type="PinJoint2D" parent="Joints" unique_id=2127980514]
+position = Vector2(0, 24)
+node_a = NodePath("../../Foreground Bicep")
+node_b = NodePath("../../Foreground Arm")
+
+[node name="Background Body to Bicep" type="PinJoint2D" parent="Joints" unique_id=2077376209]
+position = Vector2(0, -27)
+node_a = NodePath("../..")
+node_b = NodePath("../../Background Bicep")
+disable_collision = false
+softness = 2.78
+
+[node name="Background Bicep to Arm" type="PinJoint2D" parent="Joints" unique_id=602221008]
+position = Vector2(0, 24)
+node_a = NodePath("../../Background Bicep")
+node_b = NodePath("../../Background Arm")
+
+[node name="Foreground Body to Thigh" type="PinJoint2D" parent="Joints" unique_id=1871110146]
+position = Vector2(0, 77)
+node_a = NodePath("../..")
+node_b = NodePath("../../Foreground Thigh")
+disable_collision = false
+softness = 2.78
+
+[node name="Foreground Thigh to Shin" type="PinJoint2D" parent="Joints" unique_id=91149807]
+position = Vector2(0, 171)
+node_a = NodePath("../../Foreground Thigh")
+node_b = NodePath("../../Foreground Shin")
+
+[node name="Background Body to Thigh" type="PinJoint2D" parent="Joints" unique_id=551736545]
+position = Vector2(0, 25)
+node_a = NodePath("../..")
+node_b = NodePath("../../Background Thigh")
+softness = 2.78
+
+[node name="Background Thigh to Shin" type="PinJoint2D" parent="Joints" unique_id=479623497]
+position = Vector2(0, 171)
+node_a = NodePath("../../Background Thigh")
+node_b = NodePath("../../Background Shin")

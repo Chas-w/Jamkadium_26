@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://qgxwueypre76"]
+
+[ext_resource type="PackedScene" uid="uid://ca5te4xb45cj1" path="res://Scenes/body.tscn" id="1_skmq4"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_mq1bj"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_iwv7r"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_kt01x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78mdn"]
+size = Vector2(1211, 20)
+
+[sub_resource type="Gradient" id="Gradient_kt01x"]
+offsets = PackedFloat32Array(0.2951807, 0.9006024)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.5647059, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iwv7r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mq1bj"]
+width = 2000
+height = 2000
+noise = SubResource("FastNoiseLite_iwv7r")
+color_ramp = SubResource("Gradient_kt01x")
+
+[sub_resource type="Resource" id="Resource_mq1bj"]
+script = ExtResource("4_kt01x")
+
+[node name="Test World" type="Node2D" unique_id=1459091518]
+
+[node name="Body" parent="." unique_id=2071669323 instance=ExtResource("1_skmq4")]
+position = Vector2(394.99997, 126)
+rotation = -1.2568947
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=315046843]
+position = Vector2(629, 652)
+scale = Vector2(6.7599993, 1)
+collision_layer = 3
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=429056477]
+position = Vector2(-45.5, 0)
+shape = SubResource("RectangleShape2D_78mdn")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=32795462]
+z_index = -2
+position = Vector2(562, 365)
+scale = Vector2(7.381386, 6.1857224)
+texture = SubResource("NoiseTexture2D_mq1bj")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=764146522]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(394.99997, 126)
+zoom = Vector2(0.515, 0.515)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=862808834]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_mq1bj")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1665168635 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(394.99997, 126)
+script = ExtResource("3_iwv7r")
+follow_mode = 5
+follow_target = NodePath("../Body")
+zoom = Vector2(0.515, 0.515)
+tween_resource = SubResource("Resource_mq1bj")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[editable path="Body"]
