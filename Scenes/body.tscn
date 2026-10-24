@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://dmg2f3mfuf0jv" path="res://Scripts/body_mover.gd" id="1_7h43o"]
 [ext_resource type="Texture2D" uid="uid://xyhm86j4d433" path="res://icon.svg" id="1_35550"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7h43o"]
+friction = 0.5
+bounce = 0.5
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q2pd1"]
 radius = 39.0
 height = 152.0
@@ -26,10 +30,20 @@ height = 96.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_78mdn"]
 radius = 269.09106
 
-[node name="Body" type="RigidBody2D" unique_id=2071669323 groups=["Body"]]
+[sub_resource type="Curve" id="Curve_q2pd1"]
+_data = [Vector2(0.26946107, 1), 0.0, 0.0, 0, 0, Vector2(0.92814374, 0.13483143), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Body" type="RigidBody2D" unique_id=2071669323 node_paths=PackedStringArray("line", "poot") groups=["Body"]]
+process_mode = 3
 collision_layer = 4
 collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
+angular_damp = 50.0
 script = ExtResource("1_7h43o")
+line = NodePath("Line2D")
+poot = NodePath("Sprite2D")
 
 [node name="Body Collision" type="CollisionShape2D" parent="." unique_id=464653433]
 shape = SubResource("CapsuleShape2D_q2pd1")
@@ -39,7 +53,10 @@ scale = Vector2(1, 2.2622137)
 texture = SubResource("GradientTexture2D_ia51a")
 
 [node name="Head" type="RigidBody2D" parent="." unique_id=1144650411 groups=["Body"]]
+process_mode = 3
 position = Vector2(0, -124)
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1065962481]
 shape = SubResource("CapsuleShape2D_35550")
@@ -49,8 +66,11 @@ scale = Vector2(0.49164033, 0.6779516)
 texture = ExtResource("1_35550")
 
 [node name="Foreground Bicep" type="RigidBody2D" parent="." unique_id=78855675 groups=["Body"]]
+process_mode = 3
 z_index = 1
 position = Vector2(0, -72)
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Bicep" unique_id=205235332]
 position = Vector2(0, 46)
@@ -62,8 +82,11 @@ scale = Vector2(0.49164033, 0.6779516)
 texture = SubResource("CompressedTexture2D_35550")
 
 [node name="Foreground Arm" type="RigidBody2D" parent="." unique_id=811505521 groups=["Body"]]
+process_mode = 3
 z_index = 1
 position = Vector2(0, 24)
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Arm" unique_id=1230897791]
 position = Vector2(0, 48)
@@ -75,10 +98,13 @@ scale = Vector2(0.3280453, 0.7114404)
 texture = SubResource("CompressedTexture2D_35550")
 
 [node name="Background Bicep" type="RigidBody2D" parent="." unique_id=2032655242 groups=["Body"]]
+process_mode = 3
 z_index = -1
 position = Vector2(4, -72)
 collision_layer = 2
 collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background Bicep" unique_id=1648572495]
 position = Vector2(0, 46)
@@ -90,10 +116,13 @@ scale = Vector2(0.49164033, 0.6779516)
 texture = ExtResource("1_35550")
 
 [node name="Background Arm" type="RigidBody2D" parent="." unique_id=895496931 groups=["Body"]]
+process_mode = 3
 z_index = -1
 position = Vector2(4, 24)
 collision_layer = 2
 collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background Arm" unique_id=1206088604]
 position = Vector2(0, 48)
@@ -105,7 +134,10 @@ scale = Vector2(0.3280453, 0.7114404)
 texture = ExtResource("1_35550")
 
 [node name="Foreground Thigh" type="RigidBody2D" parent="." unique_id=1605450514 groups=["Body"]]
+process_mode = 3
 position = Vector2(0, 77)
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Thigh" unique_id=1790142602]
 position = Vector2(0, 46)
@@ -117,7 +149,10 @@ scale = Vector2(0.49164033, 0.6779516)
 texture = SubResource("CompressedTexture2D_35550")
 
 [node name="Foreground Shin" type="RigidBody2D" parent="." unique_id=119026989 groups=["Body"]]
+process_mode = 3
 position = Vector2(0, 173)
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground Shin" unique_id=201409409]
 position = Vector2(0, 48)
@@ -129,10 +164,13 @@ scale = Vector2(0.3280453, 0.7114404)
 texture = SubResource("CompressedTexture2D_35550")
 
 [node name="Background Thigh" type="RigidBody2D" parent="." unique_id=1865468728 groups=["Body"]]
+process_mode = 3
 z_index = -1
 position = Vector2(0, 77)
 collision_layer = 2
 collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background Thigh" unique_id=621247257]
 position = Vector2(0, 46)
@@ -144,10 +182,13 @@ scale = Vector2(0.49164033, 0.6779516)
 texture = ExtResource("1_35550")
 
 [node name="Background Shin" type="RigidBody2D" parent="." unique_id=211218250 groups=["Body"]]
+process_mode = 3
 z_index = -1
 position = Vector2(0, 173)
 collision_layer = 2
 collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_7h43o")
+can_sleep = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background Shin" unique_id=701034215]
 position = Vector2(0, 48)
@@ -218,5 +259,14 @@ node_b = NodePath("../../Background Shin")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover Area" unique_id=1000458022]
 position = Vector2(0, 26)
 shape = SubResource("CircleShape2D_78mdn")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=933876870]
+closed = true
+width_curve = SubResource("Curve_q2pd1")
+default_color = Color(0, 0, 1, 1)
+antialiased = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1658605602]
+texture = ExtResource("1_35550")
 
 [connection signal="input_event" from="Mover Area" to="." method="_on_mover_area_input_event"]

@@ -26,7 +26,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nodes_plus/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/softbody2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/easy_trajectory/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/softbody2d/plugin.cfg")
 
 [global_group]
 
@@ -52,4 +52,4 @@ test={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+environment/defaults/default_clear_color=Color(0.103743516, 0.10374353, 0.103743516, 1)
